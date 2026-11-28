@@ -52,6 +52,7 @@ example = st.selectbox("Try an example (optional)", list(EXAMPLES))
 email_text = st.text_area(
     "Email text",
     value=EXAMPLES[example],
+    key=f"email_{example}",
     height=190,
     placeholder="Paste the email message here...",
 )
