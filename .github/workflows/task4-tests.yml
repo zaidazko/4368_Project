@@ -1,0 +1,28 @@
+name: Task 4 app tests
+
+on:
+  push:
+    branches: [yousif-task4-streamlit]
+  pull_request:
+    paths:
+      - app.py
+      - src/inference.py
+      - src/preprocess.py
+      - tests/**
+      - requirements.txt
+      - .github/workflows/task4-tests.yml
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install packages
+        run: pip install -r requirements.txt
+      - name: Check Python files
+        run: python -m compileall -q app.py src
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
