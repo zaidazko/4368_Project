@@ -82,3 +82,30 @@ src/preprocess.py   # cleaning + split
 src/features.py     # TF-IDF
 src/train_nb.py     # Naive Bayes (Task 1)
 ```
+
+## Task 4 — Streamlit app (Yousif)
+
+The app lets you paste email text and predicts **Spam** or **Not Spam**.
+It uses the same text cleaning, TF-IDF vectorizer, and saved model files as the training code.
+
+### Run it
+
+From the project folder:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Streamlit should open the app in your browser. Select one of the available models,
+enter an email (or choose a sample), and click **Analyze Email**.
+
+The app automatically detects these models if their files are in `artifacts/`:
+
+- `naive_bayes.joblib` (Task 1)
+- `svm.joblib` (Task 2; merge the SVM branch first)
+- `logistic_regression.joblib` (Task 3, when completed)
+
+The existing `artifacts/tfidf_vectorizer.joblib` is also required.
+If any model is missing, it simply will not appear in the menu.
+The app is a class demo, not a production email-security tool.
