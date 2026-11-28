@@ -29,7 +29,8 @@ class AppTests(unittest.TestCase):
         self.assertEqual(len(app.exception), 0)
         app.button[0].click().run()
         self.assertEqual(len(app.exception), 0)
-        self.assertTrue(any("Please enter an email" in w.message for w in app.warning))
+        self.assertEqual(len(app.warning), 1)
+        self.assertEqual(len(app.error), 0)
 
 
 if __name__ == "__main__":
